@@ -12,35 +12,61 @@ function computerPlay(){
     }
 }
 function playRound(computerSelection, playerSelection){
+
+    //Prompts user for input
     var playerSelection = prompt("Rock, Paper or Scissors?").toLowerCase();
     var computerSelection = computerPlay();
+
+    //Compares selections, determines winner
     if(playerSelection == "rock"){
         if(computerSelection == "rock"){
-            return "Tie!";
+            return "tie";
         }else if (computerSelection == "paper"){
-            return "You lose! Paper beats Rock!";
+            return "lose";
         }else if (computerSelection == "scissors"){
-            return "You Win! Rock beats Scissors!";
+            return "win";
         }
     }
     if(playerSelection == "paper"){
         if (computerSelection == "rock"){
-            return "You win! Paper beats Rock!";
+            return "win";
         }else if (computerSelection == "paper"){
-            return "Tie!";
+            return "tie";
         }else if (computerSelection == "scissors"){
-            return "You lose! Scissors beats Paper!";
+            return "lose";
         }
     }
     if(playerSelection == "scissors"){
         if(computerSelection == "rock"){
-            return "You lose! Rock beats Scissors!";
+            return "lose";
         }else if (computerSelection == "paper"){
-            return "You win! Scissors beats Paper!";
+            return "win";
         }else if (computerSelection == "scissors"){
-            return "Tie!";
+            return "tie";
         }
     }
 }
-console.log(playRound());
-
+function game(){
+    let winCount = 0;
+    let loseCount = 0;
+    for (i = 0; i < 5; i++){
+        let result = playRound();
+        if (result == "win"){
+            winCount++;
+            console.log("wins",winCount);
+        }else if (result == "lose"){
+            loseCount++;
+            console.log("losses",loseCount);
+        }else{
+            console.log("tie");
+        }
+}
+    if(winCount > loseCount){
+        alert("You win!");
+    }else if(winCount < loseCount){
+        alert("You lose!");
+    }else{
+        alert("Tie!");
+    }
+}
+game();
